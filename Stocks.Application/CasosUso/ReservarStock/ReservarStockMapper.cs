@@ -6,13 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Stocks.Domain.Models;
 
-namespace Stocks.Application.CasosUso.AdministrarProductos.ConsultarProductos
+namespace Stocks.Application.CasosUso.ReservarStock
 {
     public class ReservarStockMapper : Profile
     {
         public ReservarStockMapper()
         {
-            
+
         }
     }
 }

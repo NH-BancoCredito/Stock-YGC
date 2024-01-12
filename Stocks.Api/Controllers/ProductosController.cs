@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Stocks.Application.CasosUso.AdministrarProductos.ConsultarProductos;
+using Stocks.Application.CasosUso.ReponerStock;
+using Stocks.Application.CasosUso.ReservarStock;
 
 namespace Stocks.Api.Controllers
 {

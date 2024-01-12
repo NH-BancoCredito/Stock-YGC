@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Stocks.Application.Common;
 using Stocks.Domain.Repositories;
 
-namespace Stocks.Application.CasosUso.AdministrarProductos.ConsultarProductos
+namespace Stocks.Application.CasosUso.ReservarStock
 {
     public class ReservarStockHandler :
         IRequestHandler<ReservarStockRequest, IResult>
@@ -21,7 +21,7 @@ namespace Stocks.Application.CasosUso.AdministrarProductos.ConsultarProductos
             _productoRepository = productoRepository;
             _mapper = mapper;
         }
-       
+
 
         public async Task<IResult> Handle(ReservarStockRequest request, CancellationToken cancellationToken)
         {
@@ -29,14 +29,14 @@ namespace Stocks.Application.CasosUso.AdministrarProductos.ConsultarProductos
             IResult response = null;
 
             try
-            {               
+            {
                 var producto = await _productoRepository.Consultar(request.IdProducto);
                 producto.Stock -= request.Cantidad; //disminuir el stock
-                var actualizar =  await _productoRepository.Modificar(producto);
+                var actualizar = await _productoRepository.Modificar(producto);
                 if (actualizar) return new SuccessResult();
                 else return new FailureResult();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 response = new FailureResult();
                 return response;

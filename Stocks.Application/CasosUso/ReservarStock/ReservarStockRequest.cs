@@ -6,11 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Stocks.Application.Common;
 
-namespace Stocks.Application.CasosUso.AdministrarProductos.ConsultarProductos
+namespace Stocks.Application.CasosUso.ReservarStock
 {
-    public class ReponerStockRequest : IRequest<IResult>
+    public class ReservarStockRequest : IRequest<IResult>
     {
         public int IdProducto { get; set; }
-        public int Cantidad { get; set; } 
+        public int Cantidad { get; set; }
     }
 }

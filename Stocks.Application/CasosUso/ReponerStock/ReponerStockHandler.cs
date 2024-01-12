@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Stocks.Application.Common;
 using Stocks.Domain.Repositories;
 
-namespace Stocks.Application.CasosUso.AdministrarProductos.ConsultarProductos
+namespace Stocks.Application.CasosUso.ReponerStock
 {
     public class ReponerStockHandler :
         IRequestHandler<ReponerStockRequest, IResult>
@@ -21,7 +21,7 @@ namespace Stocks.Application.CasosUso.AdministrarProductos.ConsultarProductos
             _productoRepository = productoRepository;
             _mapper = mapper;
         }
-       
+
 
         public async Task<IResult> Handle(ReponerStockRequest request, CancellationToken cancellationToken)
         {
@@ -29,10 +29,10 @@ namespace Stocks.Application.CasosUso.AdministrarProductos.ConsultarProductos
             IResult response = null;
 
             try
-            {               
+            {
                 var producto = await _productoRepository.Consultar(request.IdProducto);
                 producto.Stock += request.Cantidad; //aumentar el stock
-                var actualizar =  await _productoRepository.Modificar(producto);
+                var actualizar = await _productoRepository.Modificar(producto);
                 if (actualizar)
                 {
                     //Publicar la información en la cola de Kafka
@@ -41,7 +41,7 @@ namespace Stocks.Application.CasosUso.AdministrarProductos.ConsultarProductos
                 else
                     return new FailureResult();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 response = new FailureResult();
                 return response;
