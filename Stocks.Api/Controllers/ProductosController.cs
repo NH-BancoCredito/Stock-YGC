@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Stocks.Application.CasosUso.AdministrarProductos.ConsultarProductos;
+
 using Stocks.Application.CasosUso.ReponerStock;
 using Stocks.Application.CasosUso.ReservarStock;
 
@@ -18,7 +19,7 @@ namespace Stocks.Api.Controllers
         }
 
         [HttpGet("consultar")]
-        public async Task<IActionResult> Consultar([FromQuery] ConsultarProductosRequest request)
+        public async Task<IActionResult> Consultar([FromQuery] RegistrarProductoRequest request)
         {
             var response = await _mediator.Send(request);
 
@@ -35,6 +36,13 @@ namespace Stocks.Api.Controllers
 
         [HttpGet("reponer")]
         public async Task<IActionResult> Reponer([FromQuery] ReponerStockRequest request)
+        {
+            var response = await _mediator.Send(request);
+
+            return Ok(response);
+        }
+        [HttpGet("registrar")]
+        public async Task<IActionResult> Registrar([FromQuery] RegistrarProductoRequest request)
         {
             var response = await _mediator.Send(request);
 
