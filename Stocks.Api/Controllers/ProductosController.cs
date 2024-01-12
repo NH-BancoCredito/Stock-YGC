@@ -19,7 +19,7 @@ namespace Stocks.Api.Controllers
         }
 
         [HttpGet("consultar")]
-        public async Task<IActionResult> Consultar([FromQuery] RegistrarProductoRequest request)
+        public async Task<IActionResult> Consultar([FromQuery] ConsultarProductosRequest request)
         {
             var response = await _mediator.Send(request);
 
