@@ -26,23 +26,23 @@ namespace Stocks.Api.Controllers
             return Ok(response);
         }
 
-        [HttpGet("reservar")]
-        public async Task<IActionResult> Reservar([FromQuery] ReservarStockRequest request)
+        [HttpPut("reservar")]
+        public async Task<IActionResult> Reservar([FromBody] ReservarStockRequest request)
         {
             var response = await _mediator.Send(request);
 
             return Ok(response);
         }
 
-        [HttpGet("reponer")]
-        public async Task<IActionResult> Reponer([FromQuery] ReponerStockRequest request)
+        [HttpPut("reponer")]
+        public async Task<IActionResult> Reponer([FromBody] ReponerStockRequest request)
         {
             var response = await _mediator.Send(request);
 
             return Ok(response);
         }
-        [HttpGet("registrar")]
-        public async Task<IActionResult> Registrar([FromQuery] RegistrarProductoRequest request)
+        [HttpPut("registrar")]
+        public async Task<IActionResult> Registrar([FromBody] RegistrarProductoRequest request)
         {
             var response = await _mediator.Send(request);
 
